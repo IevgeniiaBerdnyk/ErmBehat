@@ -1,0 +1,22 @@
+default:
+  autoload:
+    '': %paths.base%/features/bootstrap/
+  extensions:
+    SensioLabs\Behat\PageObjectExtension:
+      namespaces:
+        page: [Erm\Behat\Bootstrap\Page]
+    Behat\MinkExtension:
+      base_url: https://uk.easyroommate.com/
+      default_session: selenium2
+      javascript_session: selenium2
+      browser_name: 'chrome'
+      selenium2:
+        wd_host: 'http://127.0.0.1:4444/wd/hub'
+        capabilities: { "browser": "chrome", "browser": "chromedriver" }
+  suites:
+    default:
+      contexts:
+        - Erm\Behat\Bootstrap\FeatureContext:
+#            base_url: https://uk.easyroommate.com/
+      filters:
+        tags: "~@pending"
